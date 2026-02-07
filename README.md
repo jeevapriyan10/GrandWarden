@@ -187,17 +187,6 @@ VITE_API_URL=https://your-app.onrender.com/api
 - **Duplicate Detection**: Similar messages automatically clustered
 - **Variation Counts**: See how many times similar claims appeared
 
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/verify` | Submit text for fact-checking |
-| GET | `/api/dashboard` | Get feed items with filters |
-| GET | `/api/trending` | Get trending items (period + sort) |
-| POST | `/api/upvote` | Upvote a misinformation item |
-| GET | `/api/export` | Download CSV report |
-| GET | `/health` | Health check endpoint |
-
 ### Example: Verify Content
 
 **Request:**
@@ -251,8 +240,6 @@ Content-Type: application/json
    - Add environment variables (see above)
    - Click "Create Web Service"
 
-**Detailed Instructions**: See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) or [DEPLOY_CHECKLIST.md](./DEPLOY_CHECKLIST.md)
-
 ## AI Features Explained
 
 ### Content Validation
@@ -286,28 +273,6 @@ AI automatically categorizes content into:
 - **Environment Variables**: Sensitive data protection
 - **Input Validation**: Content length and format validation
 
-## Performance & Scaling
-
-**Free Tier (MongoDB Atlas + Render):**
-- 512 MB database storage
-- 750 hours/month uptime
-- Auto-sleeps after 15 min inactivity
-
-**Recommended for Production:**
-- Render Starter Plan: $7/month (always on)
-- MongoDB Atlas M2: $9/month (2GB storage)
-- Total: ~$16/month for production-ready app
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| API errors | Check Gemini API key validity |
-| 502 Bad Gateway | Verify MongoDB connection string |
-| CORS errors | Update CORS_ORIGIN to match exact URL |
-| Content rejected | Ensure submission is news/factual claim |
-| No data in feed | Submit fact-checks to populate database |
-
 ## Contributing
 
 1. Fork the repository
@@ -318,24 +283,6 @@ AI automatically categorizes content into:
 
 ## License
 
-MIT License - feel free to use for your own projects!
+MIT License
 
-## Acknowledgments
-
-- **Google Gemini 3 Flash** - AI-powered analysis
-- **MongoDB** - Database storage
-- **Render.com** - Hosting platform
-- **Lucide React** - Icon library
-
-## Contact
-
-Created by **jeevapriyan10**
-
-- GitHub: [@jeevapriyan10](https://github.com/jeevapriyan10)
-- Project Link: [https://github.com/jeevapriyan10/Hermes](https://github.com/jeevapriyan10/Hermes)
-
----
-
-⭐ **Star this repository** if you find it helpful!
-
-🚀 **Live Demo**: [https://hermes-ai.onrender.com](https://hermes-ai.onrender.com) (update with your deployed URL)
+Created by [**jeevapriyan10**](https://github.com/jeevapriyan10)
