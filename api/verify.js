@@ -1,7 +1,7 @@
 // Vercel Serverless Function for /api/verify
 const mongoose = require('mongoose');
-const { validateContent, analyzeMisinformation } = require('../backend/services/aiService');
-const { findSimilarMessages, generateTemplate } = require('../backend/services/similarityService');
+const { validateContent, analyzeText } = require('../backend/services/aiService');
+const { findSimilarMessages, generateMessageTemplate } = require('../backend/services/similarityService');
 
 let cachedDb = null;
 
@@ -15,8 +15,6 @@ async function connectDatabase() {
 
     await mongoose.connect(MONGO_URI, {
         dbName: MONGO_DB_NAME,
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
     });
 
     cachedDb = mongoose.connection;
@@ -84,13 +82,13 @@ module.exports = async (req, res) => {
             };
 
             return res.status(400).json({
-                error: rejectionMessages[validation.contentType] || validation.reason || 'Content not suitable for fact-checking',
+                error: rejectionMessages[validation.contentType] || validation.rejectionReason || 'Content not suitable for fact-checking',
                 contentType: validation.contentType,
             });
         }
 
-        // AI Analysis
-        const analysis = await analyzeMisinformation(text);
+        // AI Analysis - use analyzeText which returns the full analysis
+        const analysis = await analyzeText(text);
 
         // Duplicate detection
         const similarMessages = await findSimilarMessages(text);
@@ -100,7 +98,7 @@ module.exports = async (req, res) => {
 
         if (similarMessages.length > 0) {
             clusterId = similarMessages[0].clusterId || `cluster_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-            messageTemplate = await generateTemplate([text, ...similarMessages.map(m => m.text)]);
+            messageTemplate = await generateMessageTemplate([text, ...similarMessages.map(m => m.text)]);
 
             await Misinformation.updateMany(
                 { _id: { $in: similarMessages.map(m => m._id) } },
