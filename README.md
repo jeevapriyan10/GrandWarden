@@ -63,7 +63,7 @@ Hermes/
 │   └── package.json
 │
 ├── README.md
-└── render.yaml                 # Render.com deployment config
+└── vercel.json
 ```
 
 ## Quick Start
@@ -212,33 +212,6 @@ Content-Type: application/json
   "variations": 3
 }
 ```
-
-## Deployment
-
-### Deploy to Render.com
-
-1. **Setup MongoDB Atlas** (Free):
-   - Create cluster at https://mongodb.com/cloud/atlas
-   - Add database user and get connection string
-
-2. **Push to GitHub**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/YOUR_USERNAME/hermes.git
-   git push -u origin main
-   ```
-
-3. **Deploy on Render**:
-   - Go to https://render.com
-   - New → Web Service
-   - Connect GitHub repository
-   - Configure:
-     - **Build Command**: `cd frontend && npm install && npm run build && cd ../backend && npm install`
-     - **Start Command**: `cd backend && node index.js`
-   - Add environment variables (see above)
-   - Click "Create Web Service"
 
 ## AI Features Explained
 
