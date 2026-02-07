@@ -7,27 +7,22 @@
             "config": {
                 "distDir": "dist"
             }
-        },
-        {
-            "src": "backend/index.js",
-            "use": "@vercel/node"
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/api/(.*)",
-            "dest": "/backend/index.js"
+            "source": "/api/:path*",
+            "destination": "/backend/index.js"
         },
         {
-            "src": "/health",
-            "dest": "/backend/index.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/dist/$1"
+            "source": "/health",
+            "destination": "/backend/index.js"
         }
     ],
-    "env": {
-        "NODE_ENV": "production"
+    "functions": {
+        "backend/index.js": {
+            "memory": 1024,
+            "maxDuration": 10
+        }
     }
 }

@@ -83,10 +83,9 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start server
-const PORT = process.env.PORT || 4000;
-
-if (require.main === module) {
+// Start server (only for local development)
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {
         console.log(`\n🚀 Hermes Backend running on port ${PORT}`);
         console.log(`📡 Health check: http://localhost:${PORT}/health`);
@@ -94,4 +93,5 @@ if (require.main === module) {
     });
 }
 
+// Export for Vercel serverless
 module.exports = app;
