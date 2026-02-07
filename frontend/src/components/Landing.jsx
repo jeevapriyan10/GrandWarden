@@ -11,7 +11,7 @@ export default function Landing({ onGetStarted, onBrowseFeed }) {
                         <h1 className="mb-lg">
                             AI-Powered Misinformation Detection
                             <br />
-                            <span className="text-primary">Built with Gemini 2.5</span>
+                            <span className="text-primary">Built with Gemini 3</span>
                         </h1>
                         <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'var(--text-secondary)' }}>
                             Verify text content for accuracy and reliability using advanced AI analysis.
