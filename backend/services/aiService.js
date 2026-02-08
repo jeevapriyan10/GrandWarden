@@ -12,7 +12,7 @@ const validateContent = async (text) => {
         }
 
         const response = await axios.post(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`,
+            `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
             {
                 contents: [{
                     parts: [{
@@ -64,10 +64,10 @@ const callGeminiAPI = async (text) => {
             throw new Error('Gemini API key not configured');
         }
 
-        console.log('✅ Using Gemini API (gemini-pro)');
+        console.log('✅ Using Gemini API (gemini-1.5-flash)');
 
         const response = await axios.post(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+            `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
             {
                 contents: [{
                     parts: [{
@@ -133,12 +133,12 @@ const callGroqAPI = async (text) => {
             throw new Error('Groq API key not configured');
         }
 
-        console.log('✅ Using Groq API (llama3-8b-8192)');
+        console.log('✅ Using Groq API (llama-3.3-70b-versatile)');
 
         const response = await axios.post(
             'https://api.groq.com/openai/v1/chat/completions',
             {
-                model: 'llama3-8b-8192',
+                model: 'llama-3.3-70b-versatile',
                 messages: [
                     {
                         role: 'system',
