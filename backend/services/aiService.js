@@ -59,9 +59,12 @@ const callGeminiAPI = async (text) => {
     try {
         const apiKey = process.env.GEMINI_API_KEY;
 
-        if (!apiKey || apiKey.includes('your_gemini')) {
+        if (!apiKey || apiKey.trim() === '' || apiKey.includes('your_gemini')) {
+            console.error('⚠️  GEMINI_API_KEY is not configured or invalid');
             throw new Error('Gemini API key not configured');
         }
+
+        console.log('✅ Using Gemini API key:', apiKey.substring(0, 10) + '...');
 
         const response = await axios.post(
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`,
