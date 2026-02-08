@@ -1,7 +1,7 @@
 {
-  "name": "hermes",
+  "name": "grandwarden",
   "version": "1.0.0",
-  "description": "Hermes - AI-Powered Misinformation Detection Platform",
+  "description": "GrandWarden - AI-Powered Misinformation Detection Platform",
   "private": true,
   "scripts": {
     "dev:backend": "cd backend && npm run dev",

@@ -1,4 +1,4 @@
-# Grand Warden
+# GrandWarden
 AI-Powered Misinformation Detection Platform
 
 A comprehensive fact-checking system powered by Google's Gemini 3 Flash AI with semantic clustering, category-based filtering, and real-time misinformation detection.
@@ -39,7 +39,7 @@ GrandWarden/
 │   │   ├── dashboard.js       # Feed data
 │   │   ├── trending.js        # Trending items
 │   │   ├── upvote.js          # Upvote handling
-│   │   └── export.js          # CSV export
+│   │   ├── export.js          # CSV export
 │   ├── services/
 │   │   ├── aiService.js       # Gemini AI integration
 │   │   └── similarityService.js  # Duplicate detection
@@ -117,7 +117,7 @@ npm run dev
 ```env
 PORT=4000
 MONGO_URI=mongodb://localhost:27017
-MONGO_DB_NAME=GrandWarden_ai
+MONGO_DB_NAME=grandwarden_ai
 GEMINI_API_KEY=your_gemini_api_key
 GROK_API_KEY=your_grok_api_key (optional fallback)
 CORS_ORIGIN=http://localhost:5173

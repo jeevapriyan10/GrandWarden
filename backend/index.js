@@ -67,7 +67,7 @@ app.get('/health', (req, res) => {
     res.json({
         status: 'healthy',
         timestamp: new Date().toISOString(),
-        service: 'Hermes API',
+        service: 'GrandWarden API',
         version: '1.0.0',
     });
 });
@@ -87,7 +87,7 @@ app.use((err, req, res, next) => {
 if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {
-        console.log(`\n🚀 Hermes Backend running on port ${PORT}`);
+        console.log(`\n🚀 GrandWarden Backend running on port ${PORT}`);
         console.log(`📡 Health check: http://localhost:${PORT}/health`);
         console.log(`🌐 CORS enabled for: ${corsOrigin}\n`);
     });

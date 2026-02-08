@@ -59,7 +59,7 @@ function App() {
                 <div className="container">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-sm">
-                            <h3>Hermes</h3>
+                            <h3>GrandWarden</h3>
                         </div>
 
                         {/* Desktop Navigation */}
@@ -181,7 +181,7 @@ function App() {
             <footer style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', padding: '2rem 0', textAlign: 'center' }}>
                 <div className="container">
                     <p className="text-secondary text-sm">
-                        © 2026 Hermes. AI-Powered Misinformation Detection.
+                        © 2026 GrandWarden. AI-Powered Misinformation Detection.
                     </p>
                 </div>
             </footer>

@@ -1,7 +1,7 @@
 {
-    "name": "hermes-backend",
+    "name": "grandwarden-backend",
     "version": "1.0.0",
-    "description": "Backend API for Hermes misinformation detection",
+    "description": "Backend API for GrandWarden misinformation detection",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",

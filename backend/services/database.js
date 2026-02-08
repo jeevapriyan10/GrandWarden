@@ -31,7 +31,7 @@ const connectDB = async () => {
                 await client.connect();
             }
 
-            db = client.db(process.env.MONGO_DB_NAME || 'hermes_ai');
+            db = client.db(process.env.MONGO_DB_NAME || 'grandwarden_ai');
             console.log('✅ Connected to MongoDB');
             return db;
         } catch (error) {

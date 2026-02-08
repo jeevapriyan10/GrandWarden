@@ -195,10 +195,10 @@ export default function Landing({ onGetStarted, onBrowseFeed }) {
                 <div className="container">
                     <div className="flex items-center justify-center gap-sm mb-sm">
                         <Shield size={20} color="var(--primary)" />
-                        <span className="font-semibold">Hermes</span>
+                        <span className="font-semibold">GrandWarden</span>
                     </div>
                     <p className="text-secondary text-sm">
-                        © 2026 Hermes. AI-Powered Misinformation Detection.
+                        © 2026 GrandWarden. AI-Powered Misinformation Detection.
                     </p>
                 </div>
             </footer>
