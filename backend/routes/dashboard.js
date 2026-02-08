@@ -7,10 +7,13 @@ router.get('/', async (req, res) => {
         const db = getDB();
 
         if (!db) {
-            return res.status(503).json({
-                error: 'Database not available',
+            console.warn('Database not available, returning empty dashboard');
+            return res.json({
                 items: [],
-                stats: { total: 0, totalUpvotes: 0 }
+                totalDetections: 0,
+                totalUpvotes: 0,
+                stats: { total: 0, totalUpvotes: 0 },
+                timestamp: new Date().toISOString()
             });
         }
 

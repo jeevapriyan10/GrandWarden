@@ -163,7 +163,7 @@ const analyzeText = async (text) => {
                 is_misinformation: false,
                 confidence: 0.0,
                 category: 'general', // Default category
-                explanation: 'AI analysis service is temporarily unavailable. Please try again later.',
+                explanation: 'AI analysis service is temporarily unavailable (API Key issue or quota exceeded). Please try again later.',
             };
         }
     }

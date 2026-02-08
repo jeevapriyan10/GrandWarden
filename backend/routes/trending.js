@@ -8,9 +8,13 @@ router.get('/', async (req, res) => {
 
         const db = getDB();
         if (!db) {
-            return res.status(503).json({
-                error: 'Database not available',
-                items: []
+            console.warn('Database not available, returning empty trending');
+            return res.json({
+                items: [],
+                period,
+                sortBy,
+                count: 0,
+                timestamp: new Date().toISOString()
             });
         }
 
