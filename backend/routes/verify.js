@@ -73,17 +73,23 @@ router.post('/', async (req, res) => {
                 insertedId = insertResult.insertedId;
 
                 // Check for similar messages and create/update cluster
-                const { findSimilarMessages, updateMessageCluster } = require('../services/similarityService');
-                const similarMessages = await findSimilarMessages(text.trim());
+                try {
+                    const { findSimilarMessages, updateMessageCluster } = require('../services/similarityService');
+                    const similarMessages = await findSimilarMessages(text.trim());
 
-                if (similarMessages.length > 0) {
-                    await updateMessageCluster(insertedId, similarMessages);
+                    if (similarMessages.length > 0) {
+                        await updateMessageCluster(insertedId, similarMessages);
+                    }
+                } catch (similarityError) {
+                    console.error('⚠️  Similarity check failed:', similarityError.message);
                 }
 
             } catch (dbError) {
                 console.error('❌ Database error:', dbError.message);
                 // Continue even if DB insert fails
             }
+        } else if (!db && aiResult.is_misinformation) {
+            console.warn('⚠️  Database unavailable - misinformation result not stored');
         }
 
         // Return result

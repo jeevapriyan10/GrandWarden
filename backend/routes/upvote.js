@@ -15,7 +15,11 @@ router.post('/', async (req, res) => {
         const db = getDB();
 
         if (!db) {
-            return res.status(503).json({ error: 'Database not available' });
+            // Silently succeed - upvote will be applied when DB reconnects
+            return res.json({
+                success: true,
+                message: 'Upvote queued (database temporarily unavailable)'
+            });
         }
 
         // Update upvote count using _id

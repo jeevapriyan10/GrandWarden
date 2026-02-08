@@ -18,22 +18,33 @@ router.get('/', async (req, res) => {
         }
 
         // Get all misinformation items, sorted by most recent first
-        const allItems = await db.collection('misinformation')
-            .find({})
-            .sort({ timestamp: -1 })
-            .limit(100) // Limit to 100 most recent
-            .toArray();
+        let allItems = [];
+        let stats = [{ total: 0, totalUpvotes: 0 }];
+
+        try {
+            allItems = await db.collection('misinformation')
+                .find({})
+                .sort({ timestamp: -1 })
+                .limit(100)
+                .toArray();
+        } catch (queryError) {
+            console.error('Query error:', queryError.message);
+        }
 
         // Get total stats
-        const stats = await db.collection('misinformation').aggregate([
-            {
-                $group: {
-                    _id: null,
-                    total: { $sum: 1 },
-                    totalUpvotes: { $sum: '$upvotes' },
+        try {
+            stats = await db.collection('misinformation').aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        total: { $sum: 1 },
+                        totalUpvotes: { $sum: '$upvotes' },
+                    }
                 }
-            }
-        ]).toArray();
+            ]).toArray();
+        } catch (statsError) {
+            console.error('Stats error:', statsError.message);
+        }
 
         res.json({
             items: allItems,

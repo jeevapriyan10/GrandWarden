@@ -54,11 +54,17 @@ router.get('/', async (req, res) => {
         }
 
         // Get trending items
-        const items = await db.collection('misinformation')
-            .find(query)
-            .sort(sort)
-            .limit(parseInt(limit))
-            .toArray();
+        let items = [];
+        try {
+            items = await db.collection('misinformation')
+                .find(query)
+                .sort(sort)
+                .limit(parseInt(limit))
+                .toArray();
+        } catch (queryError) {
+            console.error('Trending query error:', queryError.message);
+            items = [];
+        }
 
         res.json({
             items,
