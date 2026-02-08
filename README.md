@@ -1,4 +1,4 @@
-# Hermes
+# Grand Warden
 AI-Powered Misinformation Detection Platform
 
 A comprehensive fact-checking system powered by Google's Gemini 3 Flash AI with semantic clustering, category-based filtering, and real-time misinformation detection.
@@ -32,7 +32,7 @@ A comprehensive fact-checking system powered by Google's Gemini 3 Flash AI with 
 ## Project Structure
 
 ```
-Hermes/
+GrandWarden/
 ├── backend/                    # Express API server
 │   ├── routes/
 │   │   ├── verify.js          # Fact-checking endpoint
@@ -117,7 +117,7 @@ npm run dev
 ```env
 PORT=4000
 MONGO_URI=mongodb://localhost:27017
-MONGO_DB_NAME=hermes_ai
+MONGO_DB_NAME=GrandWarden_ai
 GEMINI_API_KEY=your_gemini_api_key
 GROK_API_KEY=your_grok_api_key (optional fallback)
 CORS_ORIGIN=http://localhost:5173
